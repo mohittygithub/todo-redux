@@ -10,6 +10,12 @@ const todos = (state = initialState, action) => {
         ...state,
         data: [...state.data, { message: action.message, id: action.id }],
       };
+    case actions.DELETE_TODO:
+      const todos = state.data.filter((todo) => todo.id !== action.id);
+      return {
+        ...state,
+        data: todos,
+      };
     default:
       return state;
   }
